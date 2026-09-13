@@ -1,11 +1,44 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokédex Explorer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+  <div class="pokedex-wrapper">
+    <header class="pokedex-header">
+      <div class="pokeball-logo"></div>
+      <h1>Pokédex Explorer</h1>
+      <p>Consulte dados oficiais de qualquer Pokémon</p>
+    </header>
+
+    <section class="search-box">
+      <div class="input-wrapper">
+        <input 
+          type="text" 
+          id="campo-busca" 
+          placeholder="Digite o nome ou ID (ex: pikachu, 25)..." 
+          autocomplete="off"
+        >
+        <button id="botao-buscar">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </button>
+      </div>
+    </section>
+
+    <main id="resultado" class="result-container">
+      <div class="placeholder-state">
+        <div class="placeholder-icon">🔎</div>
+        <p>Digite o nome de um Pokémon no campo acima para buscar suas estatísticas.</p>
+      </div>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
