@@ -21,5 +21,5 @@ Uma aplicação frontend interativa que permite pesquisar Pokémon em tempo real
 2. Abra o arquivo `index.html` em qualquer navegador.
 
 ## Links
-- **Aplicação no ar (GitHub Pages):** https://Auggusti0G.github.io/bootcamp2-app/
-- **Repositório:** https://github.com/Auggusti0G/bootcamp2-app
+- **Aplicação no ar (GitHub Pages):** https://auggusti0g.github.io/bootcamp_02/
+- **Repositório:** https://github.com/Auggusti0G/bootcamp_02
