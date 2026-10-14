@@ -15,25 +15,22 @@
     <!-- Cabeçalho -->
     <header class="pokedex-header">
       <div class="pokeball-logo"></div>
-      <h1>Pokédex Explorer</h1>
-      <p>Consulte dados oficiais de qualquer Pokémon</p>
+      <h1>Pokédex</h1>
+      <p>Busque um Pokémon pelo nome ou número</p>
     </header>
 
-    <!-- Área de Busca com Ícone e Botão Aleatório -->
-    <section class="search-box">
-      <div class="input-wrapper">
-        <input 
-          type="text" 
-          id="campo-busca" 
-          placeholder="Digite o nome ou ID (ex: pikachu, 129)..." 
-          autocomplete="off"
-        >
-        <button id="botao-buscar" title="Buscar">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        </button>
+    <!-- Área de Busca: Input + Botões Lado a Lado -->
+    <section class="search-section">
+      <input 
+        type="text" 
+        id="campo-busca" 
+        placeholder="Digite o nome ou ID (ex: 129)..." 
+        autocomplete="off"
+      >
+      <div class="button-group">
+        <button id="botao-buscar" class="btn-buscar">Buscar</button>
+        <button id="botao-aleatorio" class="btn-aleatorio">🎲 Aleatório</button>
       </div>
-
-      <button id="botao-aleatorio" class="btn-aleatorio">🎲 Aleatório</button>
     </section>
 
     <!-- Área de Exibição / Resultados / Mensagem de Erro -->
@@ -46,7 +43,7 @@
 
     <!-- Rodapé -->
     <footer class="pokedex-footer">
-      <p>Dados fornecidos pela <a href="https://pokeapi.co/" target="_blank">PokeAPI</a> · Bootcamp II</p>
+      <p>Dados fornecidos pela <a href="https://pokeapi.co/" target="_blank">PokeAPI</a> · Projeto da disciplina Bootcamp II — Etapa 01</p>
     </footer>
   </div>
 
