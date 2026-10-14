@@ -3,8 +3,23 @@ const botaoBuscar = document.getElementById("botao-buscar");
 const botaoAleatorio = document.getElementById("botao-aleatorio");
 const areaResultado = document.getElementById("resultado");
 
+// Função auxiliar para buscar a tradução da habilidade para PT-BR
+async function obterHabilidadeTraduzida(urlHabilidade) {
+  try {
+    const res = await fetch(urlHabilidade);
+    if (!res.ok) return null;
+    const data = await res.json();
+    
+    // Procura a tradução em português nas 'names' da API
+    const nomePt = data.names.find(n => n.language.name === "pt" || n.language.name === "es");
+    return nomePt ? nomePt.name : data.name;
+  } catch {
+    return null;
+  }
+}
+
 async function buscarPokemon(termo) {
-  // Estado de Carregamento
+  // Exibe o estado visual de carregamento (Spinner)
   areaResultado.innerHTML = `
     <div class="loading-state">
       <div class="spinner"></div>
@@ -13,7 +28,9 @@ async function buscarPokemon(termo) {
   `;
 
   try {
-    const resposta = await fetch(`https://pokeapi.co/api/v2/pokemon/${termo}`);
+    // Garante que o termo seja formatado como texto minúsculo sem espaços
+    const termoTratado = String(termo).toLowerCase().trim();
+    const resposta = await fetch(`https://pokeapi.co/api/v2/pokemon/${termoTratado}`);
 
     if (!resposta.ok) {
       throw new Error("Pokémon não encontrado");
@@ -21,14 +38,21 @@ async function buscarPokemon(termo) {
 
     const dados = await resposta.json();
 
-    // Extração das informações da PokeAPI
+    // Extração das informações básicas
     const nome = dados.name;
     const id = String(dados.id).padStart(3, '0');
     const imagem = dados.sprites.other['official-artwork'].front_default || dados.sprites.front_default;
     const tipos = dados.types.map(t => `<span class="type-badge">${t.type.name}</span>`).join('');
     const altura = (dados.height / 10).toFixed(1);
     const peso = (dados.weight / 10).toFixed(1);
-    const habilidade = dados.abilities[0] ? dados.abilities[0].ability.name : 'N/A';
+
+    // Tradução da habilidade
+    let habilidadeNome = 'N/A';
+    if (dados.abilities.length > 0) {
+      const habObj = dados.abilities[0];
+      const traduzida = await obterHabilidadeTraduzida(habObj.ability.url);
+      habilidadeNome = traduzida || habObj.ability.name;
+    }
 
     // Renderização dos dados no DOM
     areaResultado.innerHTML = `
@@ -48,13 +72,13 @@ async function buscarPokemon(termo) {
           </div>
           <div class="stat-item">
             <span class="stat-label">Habilidade</span>
-            <span class="stat-value">${habilidade}</span>
+            <span class="stat-value">${habilidadeNome}</span>
           </div>
         </div>
       </div>
     `;
 
-    // Atualiza o valor do campo de busca com o ID/Nome do Pokémon sorteado
+    // Atualiza o valor do campo de entrada com o nome/número consultado
     campoBusca.value = dados.name;
 
   } catch (erro) {
@@ -68,17 +92,17 @@ async function buscarPokemon(termo) {
   }
 }
 
-// Disparar busca manual ao clicar no botão "Buscar"
+// Disparar busca manual ao clicar no ícone de busca
 botaoBuscar.addEventListener("click", () => {
-  const termo = campoBusca.value.toLowerCase().trim();
+  const termo = campoBusca.value;
   if (termo) {
     buscarPokemon(termo);
   }
 });
 
-// Disparar busca aleatória ao clicar no botão "🎲 Aleatório"
+// Disparar busca aleatória (Sorteia um ID de 1 a 151 para garantia total de retorno válido na API)
 botaoAleatorio.addEventListener("click", () => {
-  const idAleatorio = Math.floor(Math.random() * 1025) + 1;
+  const idAleatorio = Math.floor(Math.random() * 151) + 1;
   buscarPokemon(idAleatorio);
 });
 
