@@ -1,7 +1,41 @@
 const campoBusca = document.getElementById("campo-busca");
 const botaoBuscar = document.getElementById("botao-buscar");
 const botaoAleatorio = document.getElementById("botao-aleatorio");
+const botaoFavoritos = document.getElementById("botao-favoritos");
 const areaResultado = document.getElementById("resultado");
+
+// Gerenciamento de Favoritos no localStorage
+function obterFavoritos() {
+  return JSON.parse(localStorage.getItem("pokedex_favoritos")) || [];
+}
+
+function salvarFavoritos(lista) {
+  localStorage.setItem("pokedex_favoritos", JSON.stringify(lista));
+}
+
+function alternarFavorito(pokemon) {
+  let favoritos = obterFavoritos();
+  const index = favoritos.findIndex(f => f.id === pokemon.id);
+
+  if (index >= 0) {
+    favoritos.splice(index, 1);
+  } else {
+    favoritos.push(pokemon);
+  }
+
+  salvarFavoritos(favoritos);
+  
+  // Se o Pokémon estiver na tela, atualiza o ícone do botão
+  const btnStar = document.getElementById("btn-star");
+  if (btnStar) {
+    btnStar.innerText = eFavorito(pokemon.id) ? "⭐" : "☆";
+  }
+}
+
+function eFavorito(id) {
+  const favoritos = obterFavoritos();
+  return favoritos.some(f => f.id === id);
+}
 
 // Função auxiliar para buscar a tradução da habilidade para PT-BR
 async function obterHabilidadeTraduzida(urlHabilidade) {
@@ -54,9 +88,13 @@ async function buscarPokemon(termo) {
       habilidadeNome = traduzida || habObj.ability.name;
     }
 
+    const pokemonAtual = { id, nome, imagem };
+    const jaEhFavorito = eFavorito(id);
+
     // Renderização dos dados no DOM
     areaResultado.innerHTML = `
       <div class="pokemon-card">
+        <button id="btn-star" class="btn-fav-card" title="Favoritar">${jaEhFavorito ? "⭐" : "☆"}</button>
         <span class="pokemon-id">#${id}</span>
         <img src="${imagem}" alt="${nome}" class="pokemon-img">
         <h2 class="pokemon-name">${nome}</h2>
@@ -78,6 +116,11 @@ async function buscarPokemon(termo) {
       </div>
     `;
 
+    // Evento de clique para favoritar pelo card
+    document.getElementById("btn-star").addEventListener("click", () => {
+      alternarFavorito(pokemonAtual);
+    });
+
     // Atualiza o valor do campo de entrada com o nome/número consultado
     campoBusca.value = dados.name;
 
@@ -92,6 +135,50 @@ async function buscarPokemon(termo) {
   }
 }
 
+// Renderiza a lista de favoritos no container do resultado
+function exibirFavoritos() {
+  const favoritos = obterFavoritos();
+
+  if (favoritos.length === 0) {
+    areaResultado.innerHTML = `
+      <section class="favoritos">
+        <h2>Meus Favoritos</h2>
+        <div class="placeholder-state">
+          <p>Você ainda não tem nenhum Pokémon salvo nos favoritos.</p>
+        </div>
+      </section>
+    `;
+    return;
+  }
+
+  let itensHTML = favoritos.map(f => `
+    <div class="item-favorito" onclick="buscarPokemon('${f.nome}')">
+      <div class="item-favorito-info">
+        <img src="${f.imagem}" alt="${f.nome}" class="item-favorito-img">
+        <span class="item-favorito-nome">${f.nome} (#${f.id})</span>
+      </div>
+      <button class="btn-remover-fav" onclick="event.stopPropagation(); removerFavorito('${f.id}')" title="Remover">✕</button>
+    </div>
+  `).join("");
+
+  areaResultado.innerHTML = `
+    <section class="favoritos">
+      <h2>Meus Favoritos</h2>
+      <div id="lista-favoritos">
+        ${itensHTML}
+      </div>
+    </section>
+  `;
+}
+
+// Função global para remover favoritos da lista
+window.removerFavorito = function(id) {
+  let favoritos = obterFavoritos();
+  favoritos = favoritos.filter(f => f.id !== id);
+  salvarFavoritos(favoritos);
+  exibirFavoritos();
+};
+
 // Disparar busca manual ao clicar no ícone de busca
 botaoBuscar.addEventListener("click", () => {
   const termo = campoBusca.value;
@@ -104,6 +191,11 @@ botaoBuscar.addEventListener("click", () => {
 botaoAleatorio.addEventListener("click", () => {
   const idAleatorio = Math.floor(Math.random() * 151) + 1;
   buscarPokemon(idAleatorio);
+});
+
+// Disparar exibição de favoritos ao clicar no botão Meus Favoritos
+botaoFavoritos.addEventListener("click", () => {
+  exibirFavoritos();
 });
 
 // Disparar busca ao pressionar "Enter" no teclado

@@ -141,6 +141,25 @@ input::placeholder {
   background: #d97706;
 }
 
+/* Botão Meus Favoritos */
+.btn-favoritos {
+  width: 100%;
+  background: #3b82f6;
+  color: #ffffff;
+  border: none;
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-favoritos:hover {
+  background: #2563eb;
+}
+
 /* Cartão do Resultado */
 .result-container {
   min-height: 220px;
@@ -167,6 +186,21 @@ input::placeholder {
   font-size: 0.85rem;
   font-weight: 700;
   color: #64748b;
+}
+
+.btn-fav-card {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.btn-fav-card:hover {
+  transform: scale(1.2);
 }
 
 .pokemon-img {
@@ -226,6 +260,76 @@ input::placeholder {
   color: #f8fafc;
   text-transform: capitalize;
   word-break: break-word;
+}
+
+/* Área de Favoritos na Tela */
+.favoritos {
+  width: 100%;
+  animation: fadeIn 0.4s ease;
+}
+
+.favoritos h2 {
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+  text-align: center;
+  color: #f8fafc;
+}
+
+#lista-favoritos {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.item-favorito {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #0f172a;
+  border: 1px solid #334155;
+  padding: 10px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.item-favorito:hover {
+  background: #1e293b;
+}
+
+.item-favorito-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.item-favorito-img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.item-favorito-nome {
+  font-weight: 600;
+  text-transform: capitalize;
+  font-size: 0.95rem;
+}
+
+.btn-remover-fav {
+  background: transparent;
+  border: none;
+  color: #ef4444;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 4px;
+  transition: color 0.2s ease;
+}
+
+.btn-remover-fav:hover {
+  color: #dc2626;
 }
 
 /* Rodapé */
