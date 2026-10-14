@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pokédex Explorer</title>
+  <!-- Fonte Poppins -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -11,32 +12,41 @@
 </head>
 <body>
   <div class="pokedex-wrapper">
+    <!-- Cabeçalho -->
     <header class="pokedex-header">
       <div class="pokeball-logo"></div>
-      <h1>Pokédex Explorer</h1>
-      <p>Consulte dados oficiais de qualquer Pokémon</p>
+      <h1>Pokédex</h1>
+      <p>Busque um Pokémon pelo nome ou número</p>
     </header>
 
+    <!-- Área de Busca com Botão Aleatório -->
     <section class="search-box">
-      <div class="input-wrapper">
+      <div class="input-container">
         <input 
           type="text" 
           id="campo-busca" 
-          placeholder="Digite o nome ou ID (ex: pikachu, 25)..." 
+          placeholder="Digite o nome ou ID (ex: pikachu, 129)..." 
           autocomplete="off"
         >
-        <button id="botao-buscar">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        </button>
+        <div class="buttons-group">
+          <button id="botao-buscar" class="btn-buscar">Buscar</button>
+          <button id="botao-aleatorio" class="btn-aleatorio">🎲 Aleatório</button>
+        </div>
       </div>
     </section>
 
+    <!-- Área de Exibição de Resultados -->
     <main id="resultado" class="result-container">
       <div class="placeholder-state">
         <div class="placeholder-icon">🔎</div>
-        <p>Digite o nome de um Pokémon no campo acima para buscar suas estatísticas.</p>
+        <p>Digite o nome/ID ou clique em <strong>Aleatório</strong> para sortear um Pokémon.</p>
       </div>
     </main>
+
+    <!-- Rodapé explicativo -->
+    <footer class="pokedex-footer">
+      <p>Dados fornecidos pela <a href="https://pokeapi.co/" target="_blank">PokeAPI</a> · Projeto da disciplina Bootcamp II — Etapa 01</p>
+    </footer>
   </div>
 
   <script src="script.js"></script>
