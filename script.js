@@ -4,7 +4,7 @@ const botaoAleatorio = document.getElementById("botao-aleatorio");
 const areaResultado = document.getElementById("resultado");
 
 async function buscarPokemon(termo) {
-  // Exibe o estado visual de carregamento (Spinner)
+  // Estado de Carregamento
   areaResultado.innerHTML = `
     <div class="loading-state">
       <div class="spinner"></div>
@@ -21,7 +21,7 @@ async function buscarPokemon(termo) {
 
     const dados = await resposta.json();
 
-    // Extração das informações
+    // Extração das informações da PokeAPI
     const nome = dados.name;
     const id = String(dados.id).padStart(3, '0');
     const imagem = dados.sprites.other['official-artwork'].front_default || dados.sprites.front_default;
@@ -54,7 +54,7 @@ async function buscarPokemon(termo) {
       </div>
     `;
 
-    // Atualiza o input com o ID ou nome do Pokémon sorteado
+    // Atualiza o valor do campo de busca com o ID/Nome do Pokémon sorteado
     campoBusca.value = dados.name;
 
   } catch (erro) {
@@ -68,7 +68,7 @@ async function buscarPokemon(termo) {
   }
 }
 
-// Disparar busca ao clicar no ícone de lupa
+// Disparar busca manual ao clicar no botão "Buscar"
 botaoBuscar.addEventListener("click", () => {
   const termo = campoBusca.value.toLowerCase().trim();
   if (termo) {
@@ -76,13 +76,13 @@ botaoBuscar.addEventListener("click", () => {
   }
 });
 
-// Disparar busca ao clicar no botão "Aleatório" (sorteia ID de 1 a 1025)
+// Disparar busca aleatória ao clicar no botão "🎲 Aleatório"
 botaoAleatorio.addEventListener("click", () => {
   const idAleatorio = Math.floor(Math.random() * 1025) + 1;
   buscarPokemon(idAleatorio);
 });
 
-// Disparar busca ao apertar a tecla "Enter"
+// Disparar busca ao pressionar "Enter" no teclado
 campoBusca.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
     botaoBuscar.click();
