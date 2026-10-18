@@ -16,7 +16,7 @@ Nesta **Etapa 02**, a aplicação evoluiu significativamente ao ganhar **persist
 
 Além disso, a aplicação foi totalmente conteinerizada com **Docker** servida por um servidor web otimizado **Nginx (Alpine Linux)** e publicada no **Docker Hub**, permitindo que qualquer pessoa no mundo execute o projeto em ambiente local com um único comando.
 
-## 🎯 Evidências das Sidequests Obrigatórias (SQ1 - SQ4)
+## Evidências das Sidequests Obrigatórias (SQ1 - SQ4)
 
 ### [x] SQ1 · `.dockerignore`
 Criado o arquivo `.dockerignore` na raiz do repositório para ignorar diretórios e arquivos pesados/desnecessários no momento do build (ex.: `.git`, `README.md`, rascunhos). 
