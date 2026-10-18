@@ -1,0 +1,12 @@
+# Sidequest B – Sobe a aplicação com um único comando:
+#   docker compose up
+# (build automático + porta já mapeada; edite e recarregue sem rebuild
+#  usando "docker compose up --build" quando mudar o código)
+
+services:
+  app:
+    build: .
+    container_name: pokedex-app
+    ports:
+      - "8080:80"
+    restart: always

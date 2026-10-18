@@ -21,11 +21,17 @@
       <p>Consulte dados oficiais de qualquer Pokémon</p>
     </header>
 
-    <!-- Área de Busca -->
+    <!-------------------------------------------------->
+    <!-------------- Área de Busca --------------------->
+    <!------------------------------------------------->
+
+
     <section class="search-box">
       <div class="input-wrapper">
+
         <input type="text" id="campo-busca" placeholder="Digite o nome ou ID (ex: pikachu, 25)..." autocomplete="off">
         <button id="botao-buscar" title="Buscar">
+
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="11" cy="11" r="8"></circle>
@@ -33,6 +39,10 @@
           </svg>
         </button>
       </div>
+
+    <!-------------------------------------------------------------------------->
+    <!----------------------- Botao de Aleatorio  ------------------------------>
+    <!-------------------------------------------------------------------------->
 
       <button id="botao-aleatorio" class="btn-aleatorio">🎲 Aleatório</button>
       <button id="botao-favoritos" class="btn-favoritos">⭐ Meus Favoritos</button>
@@ -42,6 +52,10 @@
     <main id="resultado" class="result-container">
       <div class="placeholder-state">
         <div class="placeholder-icon">🔎</div>
+      
+      <!--------------------    lista de favoritos  ---------------------------->
+        <div id ="lista-favoritos"> </div>
+
         <p>Digite o nome/ID ou clique em <strong>Aleatório</strong> para sortear um Pokémon.</p>
       </div>
     </main>
