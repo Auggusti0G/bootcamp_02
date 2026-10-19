@@ -13,13 +13,22 @@
 - **[PokeAPI](https://pokeapi.co/docs/v2)** — API utilizada para consultar informações dos Pokémon.
   - **Endpoint:** `https://pokeapi.co/api/v2/pokemon/{termo}`
 - **[Supabase](https://supabase.com/)** — Banco de dados PostgreSQL na nuvem para persistência dos Pokémon favoritos.
-- **HTML5** — Estrutura da aplicação.
-- **CSS3** — Estilização e responsividade.
-- **JavaScript Vanilla** — Lógica da aplicação e integração com as APIs.
-- **Docker** — Conteinerização da aplicação.
-- **Nginx Alpine** — Servidor web leve para disponibilizar a aplicação.
-- **Docker Hub** — Hospedagem pública da imagem Docker.
-- **GitHub Pages** — Publicação da aplicação na web.
+
+---
+
+## 📂 Estrutura de Arquivos do Repositório
+
+```text
+bootcamp_02/
+├── .dockerignore       # Arquivos ignorados durante o build Docker
+├── Dockerfile          # Instruções para construir a imagem Nginx Alpine
+├── docker-compose.yml  # Configuração do Docker Compose
+├── index.html          # Interface principal da Pokédex
+├── style.css           # Estilização responsiva em Dark Mode
+├── script.js           # PokeAPI, favoritos e integração com Supabase
+├── config.js           # Configuração da conexão com o Supabase
+└── README.md           # Documentação do projeto
+```
 
 ---
 
@@ -214,24 +223,6 @@ Por meio de objetos como `Deployment` e `ReplicaSet`, é possível declarar a qu
 Caso uma instância apresente falhas, o Kubernetes pode recriar os Pods necessários para restabelecer o estado desejado. Também é possível distribuir o tráfego entre as instâncias utilizando Services e, quando necessário, recursos de balanceamento de carga.
 
 Dessa forma, o Kubernetes facilita a escalabilidade, a recuperação automática de falhas e a administração de múltiplas instâncias da aplicação.
-
----
-
-## 📂 Estrutura de Arquivos do Repositório
-
-```text
-bootcamp_02/
-├── .dockerignore       # Arquivos ignorados durante o build Docker
-├── Dockerfile          # Instruções para construir a imagem Nginx Alpine
-├── docker-compose.yml  # Configuração do Docker Compose
-├── index.html          # Interface principal da Pokédex
-├── style.css           # Estilização responsiva em Dark Mode
-├── script.js           # PokeAPI, favoritos e integração com Supabase
-├── config.js           # Configuração da conexão com o Supabase
-└── README.md           # Documentação do projeto
-```
-
----
 
 ## 🚀 Como Executar Localmente
 
