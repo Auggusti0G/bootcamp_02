@@ -14,7 +14,7 @@ Endpoint: https://pokeapi.co/api/v2/pokemon/{termo}
 
 Supabase (PostgreSQL): https://supabase.com/
 
-📂 Estrutura de Arquivos do Repositório
+📂 Estrutura de Arquivos do Repositório.
 
 bootcamp_02/
 ├── .dockerignore       # Arquivos ignorados no contexto do build Docker
