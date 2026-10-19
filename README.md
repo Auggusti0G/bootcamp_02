@@ -13,7 +13,16 @@ PokeAPI: https://pokeapi.co/docs/v2
 Endpoint: https://pokeapi.co/api/v2/pokemon/{termo}
 
 Supabase (PostgreSQL): https://supabase.com/
-
+---
+bootcamp_02/
+├── .dockerignore       # Arquivos ignorados no contexto do build Docker
+├── Dockerfile          # Instruções da imagem Nginx Alpine
+├── docker-compose.yml  # Configuração do Docker Compose para dev local
+├── index.html          # Interface HTML principal da Pokédex
+├── style.css           # Estilização completa responsiva em Dark Mode
+├── script.js           # Lógica do frontend, PokeAPI, favoritos (⭐) e Supabase
+├── config.js           # Credenciais públicas (URL e Anon Key) do Supabase
+└── README.md           # Documentação completa para entrega do projeto
 
 
 📝 Descrição Geral do Projeto
