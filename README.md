@@ -13,7 +13,8 @@ PokeAPI: https://pokeapi.co/docs/v2
 Endpoint: https://pokeapi.co/api/v2/pokemon/{termo}
 
 Supabase (PostgreSQL): https://supabase.com/
----
+
+
 bootcamp_02/
 ├── .dockerignore       # Arquivos ignorados no contexto do build Docker
 ├── Dockerfile          # Instruções da imagem Nginx Alpine
@@ -23,6 +24,7 @@ bootcamp_02/
 ├── script.js           # Lógica do frontend, PokeAPI, favoritos (⭐) e Supabase
 ├── config.js           # Credenciais públicas (URL e Anon Key) do Supabase
 └── README.md           # Documentação completa para entrega do projeto
+
 
 
 📝 Descrição Geral do Projeto
