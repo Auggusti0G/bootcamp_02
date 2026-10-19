@@ -1,185 +1,423 @@
-Pokédex Explorer & Team Builder — Etapa 02
+# 🎮 Pokédex Explorer & Team Builder — Etapa 02
 
-Autor
+## 👨‍💻 Autor
 
-Rafael Augusto Santana Gil
+**Rafael Augusto Santana Gil**
 
-Matrícula / RA: 22508717
+**Matrícula / RA:** 22508717
 
-🛠️ APIs Utilizadas
+---
 
-PokeAPI: https://pokeapi.co/docs/v2
+## 🛠️ APIs e Tecnologias Utilizadas
 
-Endpoint: https://pokeapi.co/api/v2/pokemon/{termo}
+- **[PokeAPI](https://pokeapi.co/docs/v2)** — API utilizada para consultar informações dos Pokémon.
+  - **Endpoint:** `https://pokeapi.co/api/v2/pokemon/{termo}`
+- **[Supabase](https://supabase.com/)** — Banco de dados PostgreSQL na nuvem para persistência dos Pokémon favoritos.
+- **HTML5** — Estrutura da aplicação.
+- **CSS3** — Estilização e responsividade.
+- **JavaScript Vanilla** — Lógica da aplicação e integração com as APIs.
+- **Docker** — Conteinerização da aplicação.
+- **Nginx Alpine** — Servidor web leve para disponibilizar a aplicação.
+- **Docker Hub** — Hospedagem pública da imagem Docker.
+- **GitHub Pages** — Publicação da aplicação na web.
 
-Supabase (PostgreSQL): https://supabase.com/
+---
 
+## 📝 Descrição Geral do Projeto
 
-bootcamp_02/
-├── .dockerignore       # Arquivos ignorados no contexto do build Docker
-├── Dockerfile          # Instruções da imagem Nginx Alpine
-├── docker-compose.yml  # Configuração do Docker Compose para dev local
-├── index.html          # Interface HTML principal da Pokédex
-├── style.css           # Estilização completa responsiva em Dark Mode
-├── script.js           # Lógica do frontend, PokeAPI, favoritos (⭐) e Supabase
-├── config.js           # Credenciais públicas (URL e Anon Key) do Supabase
-└── README.md           # Documentação completa para entrega do projeto
+O **Pokédex Explorer & Team Builder** é uma aplicação web interativa desenvolvida com HTML, CSS e JavaScript Vanilla, que permite pesquisar Pokémon em tempo real por meio da **PokeAPI**.
 
+A aplicação apresenta informações como:
 
+- Nome e número de identificação do Pokémon.
+- Artes oficiais e imagens dos Pokémon.
+- Tipos elementares.
+- Altura e peso.
+- Habilidade principal traduzida.
+- Sistema de favoritos para montar uma equipe personalizada.
 
-📝 Descrição Geral do Projeto
+### 🚀 Novidades da Etapa 02
 
-O Pokédex Explorer & Team Builder é uma aplicação web interativa desenvolvida com HTML, CSS e JavaScript Vanilla que permite pesquisar Pokémon em tempo real via PokeAPI, exibindo suas artes oficiais, números de ID, tipos elementares, altura, peso e habilidade principal traduzida.
+Nesta etapa, a aplicação evoluiu com a implementação de persistência de dados por meio do **Supabase**, utilizando PostgreSQL como banco de dados gerenciado na nuvem.
 
-Nesta Etapa 02, a aplicação evoluiu significativamente ao ganhar persistência de dados em tempo real através do Supabase (PostgreSQL na nuvem). O usuário agora pode salvar seus Pokémon favoritos clicando na estrela de favoritar (⭐) presente em cada cartão, montando uma equipe personalizada que permanece salva mesmo após fechar ou recarregar o navegador.
+Agora, o usuário pode favoritar Pokémon clicando na estrela (⭐) presente nos cartões. Os Pokémon selecionados são armazenados no banco de dados e permanecem disponíveis mesmo após o fechamento ou a atualização do navegador.
 
-Além disso, a aplicação foi totalmente conteinerizada com Docker, servida por um servidor web otimizado Nginx (Alpine Linux) e publicada no Docker Hub, permitindo que qualquer pessoa execute o projeto em ambiente local com um único comando.
+Além disso, a aplicação foi conteinerizada com Docker e utiliza o Nginx baseado em Alpine Linux como servidor web. A imagem foi publicada no Docker Hub, permitindo que a aplicação seja executada localmente com um único comando.
 
-🔗 Links Oficiais da Entrega (Requisitos do Moodle)
+---
 
-Repositório no GitHub:
+## 🔗 Links Oficiais da Entrega
 
-👉 https://github.com/Auggusti0G/bootcamp_02
+### 1. Repositório no GitHub
 
-Aplicação no Ar (GitHub Pages):
+👉 [Acessar o repositório do projeto](https://github.com/Auggusti0G/bootcamp_02)
 
-👉 https://auggusti0g.github.io/bootcamp_02/
+### 2. Aplicação publicada no GitHub Pages
 
-Repositório de Imagens no Docker Hub:
+👉 [Acessar a Pokédex online](https://auggusti0g.github.io/bootcamp_02/)
 
-👉 https://hub.docker.com/r/rafaelaugusto01/bootcamp_02
+### 3. Imagem publicada no Docker Hub
 
-🐳 Execução via Docker (Comando Próprio para Avaliação)
+👉 [Acessar o repositório Docker Hub](https://hub.docker.com/r/rafaelaugusto01/bootcamp_02)
 
-(4) Comando docker run pronto para o avaliador executar
+---
 
-Para testar a aplicação em uma máquina limpa diretamente a partir da imagem pública hospedada no Docker Hub, basta executar o seguinte comando no terminal:
+## 🐳 Execução via Docker
 
+### 4. Comando `docker run` para avaliação
+
+Para executar a aplicação em uma máquina que possua Docker instalado, utilize o seguinte comando no terminal:
+
+```bash
 docker run -d -p 8080:80 --name pokedex-app rafaelaugusto01/bootcamp_02:1.0
+```
 
-Após a execução, abra o navegador e acesse:
+Após a inicialização do contêiner, acesse a aplicação pelo navegador:
 
-👉 http://localhost:8080/
+👉 [http://localhost:8080/](http://localhost:8080/)
 
-💾 Persistência de Dados (Supabase / PostgreSQL)
+**O que esse comando faz?**
 
-(5) Descrição da Persistência de Dados
+- `-d`: executa o contêiner em segundo plano.
+- `-p 8080:80`: mapeia a porta 80 do contêiner para a porta 8080 da máquina.
+- `--name pokedex-app`: define o nome do contêiner.
+- `rafaelaugusto01/bootcamp_02:1.0`: identifica a imagem e a versão utilizadas.
 
-Para resolver o problema da perda de dados ao recarregar a página, a aplicação foi integrada ao serviço Supabase (BaaS - Backend as a Service).
+> **Observação:** se já existir um contêiner chamado `pokedex-app`, será necessário removê-lo ou utilizar outro nome.
 
-Banco de Dados Escolhido: Supabase (PostgreSQL gerenciado na nuvem).
+---
 
-Mecanismo de Interação (Estrela de Favoritar ⭐): Ao consultar qualquer Pokémon, a interface exibe o botão com a estrela de favoritar (⭐). Ao clicar, o sistema dispara uma requisição de inserção (INSERT) para o banco do Supabase, salvando o Pokémon na seção de favoritos.
+## 💾 Persistência de Dados — Supabase / PostgreSQL
 
-O que é Salvo: Os dados básicos do Pokémon selecionado pelo usuário.
+### 5. Descrição da persistência de dados
 
-Estrutura Detalhada da Tabela favoritos
+Para solucionar o problema da perda dos dados após recarregar a página, a aplicação foi integrada ao **Supabase**, uma plataforma Backend as a Service (BaaS) que disponibiliza um banco de dados PostgreSQL gerenciado na nuvem.
 
-id (int8 / bigint): Chave primária gerada por auto incremento (primary key).
+### ⭐ Funcionamento do sistema de favoritos
 
-criado_em (timestamptz): Data e hora em que o favorito foi salvo no banco (valor padrão now()).
+Ao pesquisar um Pokémon, o usuário pode clicar na estrela (⭐) para adicioná-lo aos favoritos.
 
-numero (int4 / integer): Número de identificação do Pokémon na Pokédex oficial, configurado com restrição UNIQUE para evitar favoritamentos duplicados.
+Essa ação dispara uma requisição de inserção (`INSERT`) para o banco de dados do Supabase. Os Pokémon salvos podem ser recuperados posteriormente, permitindo a persistência da equipe personalizada.
 
-nome (text): Nome oficial do Pokémon para rápida renderização da lista sem necessidade de reconsultar a PokeAPI.
+### Estrutura da tabela `favoritos`
 
-imagem (text): URL direta da ilustração/artwork oficial do Pokémon.
+| Coluna      | Tipo               | Descrição                                                     |
+| ----------- | ------------------ | ------------------------------------------------------------- |
+| `id`        | `int8` / `bigint`  | Chave primária gerada automaticamente por auto incremento.    |
+| `criado_em` | `timestamptz`      | Data e hora do registro, com valor padrão `now()`.            |
+| `numero`    | `int4` / `integer` | Número oficial do Pokémon na Pokédex, com restrição `UNIQUE`. |
+| `nome`      | `text`             | Nome oficial do Pokémon.                                      |
+| `imagem`    | `text`             | URL da arte oficial do Pokémon.                               |
 
-Políticas de Acesso (RLS - Row Level Security)
+A restrição `UNIQUE` na coluna `numero` impede que o mesmo Pokémon seja cadastrado mais de uma vez.
 
-Permitir Leitura Pública: SELECT liberado para a role anon.
+### 🔐 Políticas de acesso — RLS
 
-Permitir Inserção Pública: INSERT liberado para a role anon.
+A tabela utiliza políticas de Row Level Security (RLS) para controlar o acesso aos dados.
 
-Permitir Exclusão Pública: DELETE liberado para a role anon.
+As políticas implementadas permitem:
 
-Tratamento de Erros
+- **SELECT:** leitura pública dos favoritos pela role `anon`.
+- **INSERT:** inserção pública de novos favoritos pela role `anon`.
+- **DELETE:** exclusão pública de favoritos pela role `anon`.
 
-Caso o usuário tente favoritar pela estrela (⭐) um Pokémon que já existe na tabela, o PostgreSQL retorna o código de erro 23505 (violação de chave única), que é tratado no frontend para exibir a mensagem:
+Essas políticas correspondem à configuração descrita nesta entrega. Como não há autenticação individual dos usuários, o acesso público permite que os visitantes compartilhem a mesma lista de favoritos.
 
-"Este Pokémon já está nos seus favoritos!"
+> **Nota de segurança:** em uma aplicação pública, as permissões de inserção e exclusão devem ser avaliadas cuidadosamente. Para listas privadas por usuário, recomenda-se implementar autenticação e políticas RLS que restrinjam as operações ao proprietário dos registros.
 
-🎯 Evidências das Sidequests Obrigatórias (SQ1 - SQ4)
+### ⚠️ Tratamento de erros
 
-[x] SQ1 · .dockerignore
+Quando o usuário tenta favoritar um Pokémon que já está cadastrado, o PostgreSQL retorna o código `23505`, correspondente à violação de uma restrição de unicidade.
 
-Criado o arquivo .dockerignore na raiz do repositório para ignorar diretórios e arquivos pesados/desnecessários no momento do build (ex.: .git, .gitignore, README.md, rascunhos).
+O frontend trata esse erro e apresenta a mensagem:
 
-Por que é importante: Impede o envio de arquivos desnecessários ao contexto da imagem Docker, contribuindo para um build mais rápido e uma imagem final mais enxuta.
+> "Este Pokémon já está nos seus favoritos!"
 
-[x] SQ2 · Versionamento de Imagem
+---
 
-Publicamos no Docker Hub as versões etiquetadas do projeto:
+## 🎯 Evidências das Sidequests Obrigatórias — SQ1 a SQ4
 
-Tag 1.0: Primeira versão estável e funcional da aplicação.
+### ✅ SQ1 — Arquivo `.dockerignore`
 
-Tag 1.1: Versão atualizada com melhorias e correções de layout.
+Foi criado o arquivo `.dockerignore` na raiz do repositório para excluir arquivos e diretórios desnecessários durante a construção da imagem Docker.
 
-Tag latest: Tag apontando para a build mais recente do repositório.
+Entre os exemplos estão:
 
-[x] SQ3 · Descrição no Docker Hub
+- `.git`
+- `.gitignore`
+- `README.md`
+- Arquivos de rascunho.
 
-O Overview do repositório no Docker Hub foi preenchido com a descrição detalhada da aplicação, instruções de uso, o comando docker run pronto para copiar e o link direto para este repositório do GitHub.
+**Importância:** a utilização do `.dockerignore` reduz o contexto enviado ao Docker durante o build, evita a inclusão de arquivos desnecessários e pode tornar a construção da imagem mais rápida e eficiente.
 
-[x] SQ4 · Explorando a Orquestração e Kubernetes
+### ✅ SQ2 — Versionamento de imagem Docker
 
-Para testar a execução de múltiplos ambientes em paralelo, rodamos dois contêineres simultâneos da aplicação em portas distintas na mesma máquina:
+Foram publicadas versões identificadas da aplicação no Docker Hub:
 
-Container 1: Mapeado na porta 8080 (http://localhost:8080/)
+- **Tag `1.0`:** primeira versão estável e funcional.
+- **Tag `1.1`:** versão com melhorias e correções de layout.
+- **Tag `latest`:** referência à versão mais recente publicada, conforme a configuração do repositório.
 
-Container 2: Mapeado na porta 8081 (http://localhost:8081/)
+O versionamento permite identificar e executar versões específicas da aplicação.
 
-📸 Print das evidências no repositório
+### ✅ SQ3 — Descrição no Docker Hub
 
-O print demonstrando a execução dos dois contêineres rodando simultaneamente através do comando docker ps foi commitado e enviado na raiz deste repositório no GitHub.
+O campo Overview do repositório Docker Hub foi preenchido com informações sobre a aplicação, incluindo:
 
-💬 Parágrafo sobre Kubernetes: "Se eu tivesse 100 containers, como gerenciaria?"
+- Descrição do projeto.
+- Instruções de execução.
+- Comando `docker run` pronto para utilização.
+- Link para o repositório do GitHub.
 
-Se tivéssemos que gerenciar 100 contêineres simultâneos da Pokédex em um ambiente de produção de grande escala, a gestão manual via linha de comando individual do Docker seria inviável. Nesse cenário, utiliza-se um orquestrador de contêineres como o Kubernetes (K8s).
+Essa documentação facilita a utilização e a avaliação do projeto por outras pessoas.
 
-No Kubernetes, a infraestrutura física ou virtual é unificada em um Cluster. A aplicação é executada dentro de Pods, a menor unidade implantável da plataforma. Através da configuração declarativa de réplicas, controladas por um Deployment ou ReplicaSet, o orquestrador assegura que as instâncias permaneçam ativas de acordo com o estado desejado.
+### ✅ SQ4 — Explorando a orquestração e o Kubernetes
 
-Caso algum contêiner falhe ou um servidor apresente problemas, o Kubernetes pode recriar os Pods automaticamente. Além disso, permite distribuir o tráfego entre as instâncias por meio de Services e recursos de balanceamento de carga.
+Para demonstrar a execução simultânea de múltiplos contêineres, foram utilizados dois contêineres da aplicação, mapeados para portas diferentes da máquina local.
 
+#### Container 1 — Porta 8080
 
-🚀 Como Executar Localmente
+```bash
+docker run -d -p 8080:80 --name pokedex-app-1 rafaelaugusto01/bootcamp_02:1.0
+```
 
-Opção A: Com Docker Compose
+Acesso: [http://localhost:8080/](http://localhost:8080/)
+
+#### Container 2 — Porta 8081
+
+```bash
+docker run -d -p 8081:80 --name pokedex-app-2 rafaelaugusto01/bootcamp_02:1.0
+```
+
+Acesso: [http://localhost:8081/](http://localhost:8081/)
+
+#### Verificação dos contêineres
+
+Para verificar os contêineres em execução, utilize:
+
+```bash
+docker ps
+```
+
+A evidência da execução simultânea dos dois contêineres foi registrada por meio de uma captura de tela e enviada à raiz do repositório no GitHub.
+
+### 💬 Reflexão: como gerenciaríamos 100 contêineres?
+
+Se fosse necessário gerenciar 100 contêineres simultaneamente em um ambiente de produção, a administração manual de cada instância por meio de comandos individuais do Docker seria pouco eficiente.
+
+Nesse cenário, poderíamos utilizar uma ferramenta de orquestração, como o **Kubernetes (K8s)**.
+
+O Kubernetes permite organizar os recursos de infraestrutura em um cluster e executar aplicações em Pods, que representam a menor unidade implantável da plataforma.
+
+Por meio de objetos como `Deployment` e `ReplicaSet`, é possível declarar a quantidade desejada de réplicas e manter o estado da aplicação de acordo com essa configuração.
+
+Caso uma instância apresente falhas, o Kubernetes pode recriar os Pods necessários para restabelecer o estado desejado. Também é possível distribuir o tráfego entre as instâncias utilizando Services e, quando necessário, recursos de balanceamento de carga.
+
+Dessa forma, o Kubernetes facilita a escalabilidade, a recuperação automática de falhas e a administração de múltiplas instâncias da aplicação.
+
+---
+
+## 📂 Estrutura de Arquivos do Repositório
+
+```text
+bootcamp_02/
+├── .dockerignore       # Arquivos ignorados durante o build Docker
+├── Dockerfile          # Instruções para construir a imagem Nginx Alpine
+├── docker-compose.yml  # Configuração do Docker Compose
+├── index.html          # Interface principal da Pokédex
+├── style.css           # Estilização responsiva em Dark Mode
+├── script.js           # PokeAPI, favoritos e integração com Supabase
+├── config.js           # Configuração da conexão com o Supabase
+└── README.md           # Documentação do projeto
+```
+
+---
+
+## 🚀 Como Executar Localmente
+
+### Opção A — Docker Compose
 
 Na raiz do repositório clonado, execute:
 
+```bash
 docker compose up -d
+```
 
-Acesse no navegador:
+Depois, acesse:
 
-👉 http://localhost:8080/
+👉 [http://localhost:8080/](http://localhost:8080/)
 
-Opção B: Executando 2 Containers Simultâneos (SQ4)
+Para interromper os serviços, execute:
 
-# Executa o primeiro container na porta 8080
+```bash
+docker compose down
+```
+
+### Opção B — Executar dois contêineres simultaneamente
+
+Para reproduzir a demonstração da SQ4, execute:
+
+```bash
+# Primeiro contêiner — porta 8080
 docker run -d -p 8080:80 --name pokedex-app-1 rafaelaugusto01/bootcamp_02:1.0
 
-# Executa o segundo container na porta 8081
+# Segundo contêiner — porta 8081
 docker run -d -p 8081:80 --name pokedex-app-2 rafaelaugusto01/bootcamp_02:1.0
+```
 
-Container 1: http://localhost:8080/
+Acesse as instâncias:
 
-Container 2: http://localhost:8081/
+- [Container 1 — localhost:8080](http://localhost:8080/)
+- [Container 2 — localhost:8081](http://localhost:8081/)
 
-Opção C: Execução Direta no Navegador (Sem Docker)
+Para conferir se ambos estão em execução:
 
-Clone este repositório:
+```bash
+docker ps
+```
 
-git clone https://github.com/Auggusti0G/bootcamp_02.git
+### Opção C — Execução direta no navegador, sem Docker
 
-Acesse a pasta do projeto:
+1. Clone o repositório:
 
-cd bootcamp_02
+   ```bash
+   git clone https://github.com/Auggusti0G/bootcamp_02.git
+   ```
 
-Abra o arquivo index.html em um navegador web.
+2. Entre na pasta do projeto:
 
-📌 Considerações Finais
+   ```bash
+   cd bootcamp_02
+   ```
 
-O Pokédex Explorer & Team Builder — Etapa 02 demonstra a integração entre desenvolvimento frontend, consumo de APIs externas, persistência de dados em PostgreSQL, conteinerização com Docker e publicação de imagens no Docker Hub.
+3. Abra o arquivo `index.html` no navegador.
 
-A aplicação permite pesquisar Pokémon, visualizar suas características e manter uma lista de favoritos persistente. Além disso, as atividades de versionamento, documentação e execução simultânea de contêineres demonstram conceitos importantes para a implantação e manutenção de aplicações web.
+> **Observação:** para que a integração com o Supabase funcione corretamente, o arquivo `config.js` precisa estar configurado com os dados públicos de conexão do projeto. Dependendo da configuração do navegador e dos módulos utilizados, pode ser necessário executar a aplicação por meio de um servidor HTTP local.
+
+---
+
+## 📌 Considerações Finais
+
+O **Pokédex Explorer & Team Builder — Etapa 02** demonstra a integração entre desenvolvimento frontend, consumo de APIs externas, persistência de dados em PostgreSQL, conteinerização com Docker e publicação de imagens no Docker Hub.
+
+A implementação permite pesquisar Pokémon, visualizar suas características e manter uma lista de favoritos persistente. Além disso, as atividades de versionamento, documentação e execução simultânea de contêineres demonstram conceitos importantes para a implantação e a manutenção de aplicações web.
+
+O projeto também estabelece uma base para evoluções futuras, como autenticação de usuários, equipes privadas, filtros avançados e implantação orquestrada com Kubernetes.
+
+TA VENDO ESSA FORMATAÇÃO ABAIXO EM # \* COM ESSE TIPO DE SIMBOLO ???? PRECISO QUE VC ME MANDE O REDME QUE ESCREVI PRIMEIRO NESSA CONFIGURAÇÃO OUVIU FAÇA CERTO ESSA MERDA 
+
+
+**# Pokédex Explorer & Team Builder — Etapa 02**
+
+\
+
+
+**## Autor**
+
+**\*\*Rafael Augusto Santana Gil\*\***  
+
+**\*\*Matrícula / RA:\*\*** 22508717
+
+\
+
+
+\---
+
+**## API utilizada**
+
+\- **\*\*PokeAPI:\*\*** [https://pokeapi.co/docs/v2](https://pokeapi.co/docs/v2)
+
+\- **\*\*Endpoint:\*\*** \`[https://pokeapi.co/api/v2/pokemon/{termo](https://pokeapi.co/api/v2/pokemon/{termo)}\`
+
+\
+
+
+**## 📝 Descrição Geral do Projeto**
+
+O **\*\*Pokédex Explorer & Team Builder\*\*** é uma aplicação web interativa desenvolvida com HTML, CSS e JavaScript Vanilla que permite pesquisar Pokémon em tempo real via **\*\*PokeAPI\*\***, exibindo suas artes oficiais, números de ID, tipos elementares, altura, peso e habilidade principal traduzida.
+
+\
+
+
+Nesta **\*\*Etapa 02\*\***, a aplicação evoluiu significativamente ao ganhar **\*\*persistência de dados em tempo real\*\*** através do **\*\*Supabase\*\*** (PostgreSQL na nuvem). O usuário agora pode salvar seus Pokémon favoritos clicando na **\*\*estrela de favoritar (⭐)\*\*** presente em cada cartão, montando uma equipe personalizada que permanece salva mesmo após fechar ou recarregar o navegador.&#x20;
+
+\
+
+
+Além disso, a aplicação foi totalmente conteinerizada com **\*\*Docker\*\*** servida por um servidor web otimizado **\*\*Nginx (Alpine Linux)\*\*** e publicada no **\*\*Docker Hub\*\***, permitindo que qualquer pessoa no mundo execute o projeto em ambiente local com um único comando..
+
+\
+
+
+**## Evidências das Sidequests Obrigatórias (SQ1 - SQ4)**
+
+\
+
+
+**### [x] SQ1 · \`.dockerignore\`**
+
+Criado o arquivo \`.dockerignore\` na raiz do repositório para ignorar diretórios e arquivos pesados/desnecessários no momento do build (ex.: \`.git\`, \`README.md\`, rascunhos).&#x20;
+
+\- **\*\*Por que é importante:\*\*** Impede o envio de arquivos desnecessários ao contexto da imagem Docker, resultando em um build significativamente mais rápido e uma imagem final leve e enxuta.
+
+\
+
+
+**### [x] SQ2 · Versionamento de Imagem**
+
+Publicamos no Docker Hub as versões etiquetadas do projeto:
+
+\- Tag \`1.0\`: Primeira versão estável e funcional da aplicação.
+
+\- Tag \`1.1\`: Versão atualizada com melhorias e correções de layout.
+
+\- Tag \`latest\`: Tag apontando para a build mais recente do repositório.
+
+\
+
+
+**### [x] SQ3 · Descrição no Docker Hub**
+
+O Overview do repositório no Docker Hub foi preenchido com a descrição detalhada da aplicação, instruções de uso, o comando \`docker run\` pronto para copiar e o link direto para este repositório do GitHub.
+
+\
+
+
+**### [x] SQ4 · Explorando a Orquestração e Kubernetes**
+
+Para testar a orquestração e execução de múltiplos ambientes em paralelo, rodamos dois containers simultâneos da aplicação em portas distintas na mesma máquina:
+
+\- **\*\*Container 1:\*\*** Mapeado na porta \`8080\` (\`[http://localhost:8080/](http://localhost:8080/)\`)
+
+\- **\*\*Container 2:\*\*** Mapeado na porta \`8081\` (\`[http://localhost:8081/](http://localhost:8081/)\`)
+
+\---
+
+\
+
+
+**## 🔗 Links Oficiais da Entrega.**
+
+\
+
+
+1\. **\*\*Repositório no GitHub:\*\***  
+
+   👉 [[https://github.com/Auggusti0G/bootcamp_02\](https://github.com/Auggusti0G/bootcamp_02)](https://github.com/Auggusti0G/bootcamp_02]\(https://github.com/Auggusti0G/bootcamp_02\))
+
+\
+
+
+2\. **\*\*Aplicação no Ar (GitHub Pages):\*\***  
+
+   👉 [[https://auggusti0g.github.io/bootcamp_02/\](https://auggusti0g.github.io/bootcamp_02/)](https://auggusti0g.github.io/bootcamp_02/]\(https://auggusti0g.github.io/bootcamp_02/\))
+
+\
+
+
+3\. **\*\*Repositório de Imagens no Docker Hub:\*\***  
+
+   👉 [[https://hub.d](https://hub.d)
+
+
+\
