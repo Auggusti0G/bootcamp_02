@@ -2,7 +2,8 @@
 
 ## 👨‍💻 Autor
 
-**Rafael Augusto Santana Gil                                                                 Matrícula / RA:** 22508717
+**Rafael Augusto Santana Gil                                                                 
+**Matrícula / RA:** 22508717
 
 ---
 
