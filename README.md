@@ -35,7 +35,7 @@ bootcamp_02/
 
 ### 1. Repositório no GitHub
 
-👉 [Acessar o repositório do projeto](https://github.com/Auggusti0G/bootcamp_02)
+👉 https://github.com/Auggusti0G/bootcamp_02
 
 ### 2. Aplicação publicada no GitHub Pages
 
