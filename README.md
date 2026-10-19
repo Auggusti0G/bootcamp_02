@@ -39,11 +39,11 @@ bootcamp_02/
 
 ### 2. Aplicação publicada no GitHub Pages
 
-👉 [Acessar a Pokédex online](https://auggusti0g.github.io/bootcamp_02/)
+👉 https://auggusti0g.github.io/bootcamp_02/
 
 ### 3. Imagem publicada no Docker Hub
 
-👉 [Acessar o repositório Docker Hub](https://hub.docker.com/r/rafaelaugusto01/bootcamp_02)
+👉 https://hub.docker.com/r/rafaelaugusto01/bootcamp_02
 
 ---
 
