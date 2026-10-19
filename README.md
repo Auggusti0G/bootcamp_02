@@ -29,6 +29,21 @@ bootcamp_02/
 ├── config.js           # Configuração da conexão com o Supabase
 └── README.md           # Documentação do projeto
 ```
+---
+
+## 🔗 Links Oficiais da Entrega
+
+### 1. Repositório no GitHub
+
+👉 [Acessar o repositório do projeto](https://github.com/Auggusti0G/bootcamp_02)
+
+### 2. Aplicação publicada no GitHub Pages
+
+👉 [Acessar a Pokédex online](https://auggusti0g.github.io/bootcamp_02/)
+
+### 3. Imagem publicada no Docker Hub
+
+👉 [Acessar o repositório Docker Hub](https://hub.docker.com/r/rafaelaugusto01/bootcamp_02)
 
 ---
 
@@ -52,24 +67,6 @@ Nesta etapa, a aplicação evoluiu com a implementação de persistência de dad
 Agora, o usuário pode favoritar Pokémon clicando na estrela (⭐) presente nos cartões. Os Pokémon selecionados são armazenados no banco de dados e permanecem disponíveis mesmo após o fechamento ou a atualização do navegador.
 
 Além disso, a aplicação foi conteinerizada com Docker e utiliza o Nginx baseado em Alpine Linux como servidor web. A imagem foi publicada no Docker Hub, permitindo que a aplicação seja executada localmente com um único comando.
-
----
-
-## 🔗 Links Oficiais da Entrega
-
-### 1. Repositório no GitHub
-
-👉 [Acessar o repositório do projeto](https://github.com/Auggusti0G/bootcamp_02)
-
-### 2. Aplicação publicada no GitHub Pages
-
-👉 [Acessar a Pokédex online](https://auggusti0g.github.io/bootcamp_02/)
-
-### 3. Imagem publicada no Docker Hub
-
-👉 [Acessar o repositório Docker Hub](https://hub.docker.com/r/rafaelaugusto01/bootcamp_02)
-
----
 
 ## 🐳 Execução via Docker
 
